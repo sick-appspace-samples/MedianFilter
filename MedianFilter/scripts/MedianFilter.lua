@@ -1,5 +1,5 @@
 
---Start of Global Scope--------------------------------------------------------- 
+--Start of Global Scope---------------------------------------------------------
 local counter = 0
 local SCAN_FILE_PATH = "resources/TestScenario.xml"
 print("Input File: ", SCAN_FILE_PATH)
@@ -36,14 +36,14 @@ Scan.Provider.File.setFile(provider, SCAN_FILE_PATH)
 -- Set the DataSet of the recorded data which should be used.
 Scan.Provider.File.setDataSetID(provider, 1)
 
---End of Global Scope----------------------------------------------------------- 
+--End of Global Scope-----------------------------------------------------------
 
 --Start of Function and Event Scope---------------------------------------------
 
--- Callback function to process new scans
+---Callback function to process new scans
 function handleNewScan(scan)
   counter = counter + 1
-  -- make one call to the filter 
+  -- make one call to the filter
   filteredScan = Scan.MedianFilter.filter(medianFilter, scan)
   -- plot filteres scan
   if ( nil ~= filteredScan ) then
@@ -54,7 +54,7 @@ function handleNewScan(scan)
     View.present(viewer)
   end
 end
--- Register callback function to "OnNewScan" event. 
+-- Register callback function to "OnNewScan" event.
 -- This call also starts the playback of scans
 Scan.Provider.File.register(provider, "OnNewScan", "handleNewScan")
 
